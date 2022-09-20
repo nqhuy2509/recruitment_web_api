@@ -31,12 +31,24 @@ export const createUser = async (req, res, next) => {
 export const updateUser = async (req, res, next) => {
 	try {
 		const updatedUser = await User.findOneAndUpdate(
-			{ accountId: req.params.id },
+			{ accountId: req.account.id },
 			{ $set: req.body },
 			{ new: true }
 		);
 
 		res.status(200).json({ message: 'Updated sucessfully', updatedUser });
+	} catch (error) {
+		next(error);
+	}
+};
+
+// Get userinfo
+export const getUser = async (req, res, next) => {
+	try {
+		const user = await User.findOne({ accountId: req.params.id })
+			.populate('accountId')
+			.exec();
+		res.status(200).json(user);
 	} catch (error) {
 		next(error);
 	}

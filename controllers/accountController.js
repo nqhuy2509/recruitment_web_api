@@ -1,5 +1,6 @@
 import Account from '../models/Account.js';
 import Recruiter from '../models/Recruiter.js';
+import User from '../models/User.js';
 import { ROLE } from '../utils/constant.js';
 import { createError } from '../utils/createError.js';
 
@@ -27,6 +28,9 @@ export const deleteAccount = async (req, res, next) => {
 		if (account) {
 			if (account.role === ROLE.RECRUITER) {
 				await Recruiter.findOneAndDelete({ accountId: req.params.id });
+			}
+			if (account.role === ROLE.USER) {
+				await User.findOneAndDelete({ accountId: req.params.id });
 			}
 			await account.delete();
 			res.status(200).json('Delete account successfully !');

@@ -1,24 +1,26 @@
-import mongoose from 'mongoose';
+import mongoose, { Schema } from 'mongoose';
 
 const ApplySchema = new mongoose.Schema(
 	{
 		newsId: {
-			type: String,
+			type: Schema.Types.ObjectId,
 			required: true,
 		},
 		userId: {
-			type: String,
+			type: Schema.Types.ObjectId,
 			required: true,
 		},
 		applyDate: {
 			type: Date,
-			default: Date.now(),
+			default: new Date(),
 		},
 		CV: {
 			type: File,
 		},
 		status: {
 			type: String,
+			default: 'pending',
+			enum: ['pending', 'success', 'cancel'],
 		},
 		intro: {
 			type: String,

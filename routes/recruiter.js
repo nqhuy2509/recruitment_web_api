@@ -15,13 +15,7 @@ import {
 const router = express.Router();
 
 router.post('/', verifyToken, verifyRecruiter, createRecruiter);
-router.put(
-	'/:id',
-	verifyToken,
-	verifyAccount,
-	verifyRecruiter,
-	updateRecruiter
-);
+router.put('/', verifyToken, verifyAccount, verifyRecruiter, updateRecruiter);
 router.get('/', getAllRecruiters);
 router.get('/:id', getRecuiter);
 

@@ -24,7 +24,7 @@ export const createRecruiter = async (req, res, next) => {
 export const updateRecruiter = async (req, res, next) => {
 	try {
 		const updatedRecuiter = await Recruiter.findOneAndUpdate(
-			{ accountId: req.params.id },
+			{ accountId: req.account.id },
 			{
 				$set: req.body,
 			},

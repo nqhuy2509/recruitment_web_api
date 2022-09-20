@@ -5,6 +5,7 @@ const RecruiterSchema = new mongoose.Schema(
 		accountId: {
 			type: Schema.Types.ObjectId,
 			required: true,
+			unique: true,
 			ref: 'Account',
 		},
 		name: {
