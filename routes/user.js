@@ -13,7 +13,7 @@ import {
 const router = express.Router();
 
 router.post('/', verifyToken, verifyUser, createUser);
-router.put('/:id', verifyToken, verifyAccount, verifyUser, updateUser);
+router.put('/', verifyToken, verifyAccount, verifyUser, updateUser);
 router.get('/:id', verifyToken, verifyAccount, getUser);
 
 export default router;

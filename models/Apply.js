@@ -5,18 +5,18 @@ const ApplySchema = new mongoose.Schema(
 		newsId: {
 			type: Schema.Types.ObjectId,
 			required: true,
+			ref: 'News',
 		},
 		userId: {
 			type: Schema.Types.ObjectId,
 			required: true,
+			ref: 'User',
 		},
 		applyDate: {
 			type: Date,
 			default: new Date(),
 		},
-		CV: {
-			type: File,
-		},
+		CV: {},
 		status: {
 			type: String,
 			default: 'pending',
